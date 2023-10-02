@@ -1,0 +1,1 @@
+scp -r ~/Downloads/dist root@171.244.51.79:/zserver

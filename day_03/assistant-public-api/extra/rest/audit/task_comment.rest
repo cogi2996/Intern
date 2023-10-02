@@ -1,0 +1,39 @@
+@port = 3001
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjMtMTItMzBUMTg6MDc6MjAuMDIxMTI5KzA3OjAwIiwidXNlcl9pZCI6MX0.gcB5e_unZPY1QSjXjTsJXc_PRpav56Y6ZJEpG2660CU
+@task = audit-tasks
+@comment = comments
+
+
+###########
+# AUTH #
+###########
+# Create
+POST http://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+POST http://{{host}}/api/v1/{{task}}/1/{{comment}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"msg":"Complate ontime 4"}
+###
+
+# Read
+GET http://{{host}}/api/v1/{{task}}/1/{{comment}} HTTP/1.1
+{{token}}
+###
+
+# Delete
+DELETE http://{{host}}/api/v1/{{task}}/1/{{comment}}/1 HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+{{token}}
+###

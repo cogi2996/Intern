@@ -1,0 +1,39 @@
+@port = 3001
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjMtMDYtMjdUMjM6MjQ6MDAuNzM2NjA3MTErMDc6MDAiLCJ1c2VyX2lkIjoyfQ.5Cey2DEPwTVDivVuzVvnJGYFJdQFZxKHcetLXOULhRI
+@task = tasks
+@comment = comments
+
+
+###########
+# AUTH #
+###########
+# Create
+POST http://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc@coteccons.vn","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+POST http://{{host}}/api/v1/{{task}}/3/{{comment}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"msg":"Forward ontime"}
+###
+
+# Read
+GET http://{{host}}/api/v1/{{task}}/3/{{comment}} HTTP/1.1
+{{token}}
+###
+
+# Delete
+DELETE http://{{host}}/api/v1/{{task}}/3/{{comment}}/1 HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+{{token}}
+###

@@ -1,0 +1,35 @@
+@port = 3001
+@host = localhost:{{port}}
+#@host = coteccons.info
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjQtMDEtMjBUMTk6NTM6MTMuODYyNzA1KzA3OjAwIiwidXNlcl9pZCI6MX0.9I8TPFVJxzYJJNbT8Eogeb-2eostMRlVOhefzt_Y6jY
+@report = tasks
+@comment = comments
+
+
+###########
+# AUTH #
+###########
+# Create
+POST http://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc@coteccons.vn","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+POST http://{{host}}/api/v1/reports/project HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"first":{"project_id":1,"year":2019,"month":1},"second":{"project_id":4,"year":2019,"month":2},"is_same_time": true}
+###
+
+GET http://{{host}}/api/v1/reports/sefl-constructor?executor_id=1&package_work_start_date=2023-06-01&package_work_end_date=2023-06-30&day_work_start_date=2023-07-01&day_work_end_date=2023-07-31 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+###

@@ -1,0 +1,70 @@
+@port = 3001
+@host = coteccons.info
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjMtMTItMzBUMTg6MDQ6MzMuMTczMDE1KzA3OjAwIiwidXNlcl9pZCI6MX0.U-q_ZXlikfv1GeUuNEJPs33GGKnnEI0OBKwNGe0LIRk
+@task = private-tasks
+
+
+###########
+# AUTH #
+###########
+# Create
+POST http://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+POST https://{{host}}/api/v1/{{task}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"name":"Giam sat 1", "project_id":13,"phase_id":1,"area_id":2,"executor_id":8,"start_time":"2023-10-04","end_time":"2023-04-05","quantity":300,"price":20000,"description":"san tang 2","priority_level":"high"}
+
+###
+
+
+POST http://{{host}}/api/v1/{{task}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"name":"Giam sat 1 1 1", "parent_task_id":2, "project_id":8,"executor_id":2,"start_time":"2023-10-06","end_time":"2023-04-06","quantity":200,"price":20000,"description":"san tang 2","priority_level":"normal"}
+
+
+############
+# USERS #
+############
+# UPDATE
+
+PUT http://{{host}}/api/v1/{{task}}/19 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"name":"Giám sát thi công","parent_task_id":2,"project_id":13,"phase_id":1,"area_id":2,"executor_id":2,"start_time":"2023-06-04","end_time":"2023-04-05","quantity":300,"price":20000,"description":"san tang 2","priority_level":"normal"}
+
+###
+
+# Read
+GET http://{{host}}/api/v1/{{task}}/9 HTTP/1.1
+{{token}}
+###
+
+# Read list
+GET http://{{host}}/api/v1/{{task}}?project_id=1&creator_id=2&acceptor_id=3&executor_id=4&start_time=2022-10-01&end_time=2060-11-20&status=created&priority_level=low HTTP/1.1
+{{token}}
+###
+
+# Read list
+GET http://{{host}}/api/v1/{{task}}?need_export_file=true HTTP/1.1
+{{token}}
+###
+
+# Delete
+DELETE http://{{host}}/api/v1/{{task}}/1 HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+{{token}}
+###

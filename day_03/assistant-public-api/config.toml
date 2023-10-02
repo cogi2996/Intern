@@ -1,0 +1,9 @@
+[service]
+#domain = "http://coteccons.info"
+domain = "http://localhost:3001"
+port = 3001
+[database]
+address = "127.0.0.1:33061"
+dbname = "taskmanage"
+username = "root"
+password = "my-secret-pw"

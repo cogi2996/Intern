@@ -1,0 +1,1 @@
+curl -X POST http://localhost:3001/api/v1/audit-tasks/1/images -H "Content-Type: multipart/form-data" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjMtMTItMzBUMTg6MDc6MjAuMDIxMTI5KzA3OjAwIiwidXNlcl9pZCI6MX0.gcB5e_unZPY1QSjXjTsJXc_PRpav56Y6ZJEpG2660CU" -F "image=@/Users/lap00004/Downloads/questions.jpeg"

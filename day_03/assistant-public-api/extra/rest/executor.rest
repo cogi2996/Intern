@@ -1,0 +1,54 @@
+@port = 3001
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjQtMDEtMTJUMTY6MzU6NTAuMjE3OTU3KzA3OjAwIiwidXNlcl9pZCI6MX0.dmNJZkW0LqQKy5bj2q0AO-UDaBMarFCbfs7aoZmy1vE
+@executor = executors
+
+
+###########
+# AUTH #
+###########
+# Create
+POST http://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+POST http://{{host}}/api/v1/{{executor}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"representer_id":1,"code":"NV014","name":"TNHH Hoa Phat 14","address":"34 Thuan An 4", "phone":"1234568","email":"nguyanvanb@abc.com"}
+
+############
+# USERS #
+############
+# UPDATE
+
+PUT http://{{host}}/api/v1/{{executor}}/3 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"representer_id":3,"code":"NT022","name":"TNHH Hoa Phat 22","address":"34 Thuan An 2", "phone":"1234568","email":"nguyanvanb@abc.com"}
+###
+
+# Read
+GET http://{{host}}/api/v1/{{executor}}/4 HTTP/1.1
+{{token}}
+###
+
+# Read
+GET http://{{host}}/api/v1/{{executor}} HTTP/1.1
+{{token}}
+###
+
+# Delete
+DELETE http://{{host}}/api/v1/{{executor}}/1 HTTP/1.1
+Content-Type: application/json
+{{token}}
+###

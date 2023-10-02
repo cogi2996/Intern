@@ -1,0 +1,51 @@
+package audit
+
+import (
+	"fmt"
+	"net/http"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+	"github.com/ideal-forward/assistant-public-api/controllers/resources"
+	"github.com/ideal-forward/assistant-public-api/entities"
+	"github.com/ideal-forward/assistant-public-api/middlewares"
+	"github.com/ideal-forward/assistant-public-api/pkg/http_parser"
+)
+
+func (h Handler) CreateTaskComment(c *gin.Context) {
+	ctx := c.Request.Context()
+	req := &resources.CreateTaskCommentRequest{}
+
+	taskID, err := strconv.ParseInt(c.Param("id"), 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, fmt.Errorf("invalid parameter"))
+		return
+	}
+
+	err = http_parser.BindAndValid(c, req)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err)
+		return
+	}
+	userID, _, _ := middlewares.ParseToken(c)
+
+	data := &entities.AuditTaskComment{
+		Base: entities.Base{
+			CreatedBy: userID,
+		},
+		TaskID:  taskID,
+		Comment: req.Msg,
+	}
+	id, err := h.TaskComment.Create(ctx, data)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, &resources.Response{
+		Data: &resources.CreateResponse{
+			ID:   id,
+			UUID: data.UUID,
+		},
+	})
+}

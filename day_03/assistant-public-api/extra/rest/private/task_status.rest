@@ -1,0 +1,28 @@
+@port = 3001
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjMtMTItMzBUMTg6MTA6MDIuMjA1MzYyKzA3OjAwIiwidXNlcl9pZCI6MX0.IqFzt7dCI0_qHN0zRsCF7in1d1OoozJ-tQNulBFOvQE
+@task = private-tasks
+@comment = comments
+
+
+###########
+# AUTH #
+###########
+# Create
+POST http://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+PATCH http://{{host}}/api/v1/{{task}}/2 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"status":"completed"}
+###

@@ -1,0 +1,28 @@
+@port = 3001
+@host = coteccons.info
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjMtMDYtMzBUMjM6Mjg6MDUuODMyNjgzKzA3OjAwIiwidXNlcl9pZCI6MX0.tJ7BKMf8jSbtZxkaj3zquEFYrbCPBkEMYBT4pHXKwMI
+@task = tasks
+@comment = comments
+
+
+###########
+# AUTH #
+###########
+# Create
+POST https://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+PATCH https://{{host}}/api/v1/{{task}}/3 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"status":"accepted"}
+###

@@ -1,0 +1,37 @@
+@port = 3001
+@host = coteccons.info
+# @host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjQtMDItMTRUMTU6NDQ6NDIuNjk2NzA1NzMxKzA3OjAwIiwidXNlcl9pZCI6MX0.UEw-1g2biqQ04f1b3IEjYKp_DA5aqzZ5KL4UpqdQZZQ
+@user = users
+
+
+###########
+# AUTH #
+###########
+# Create
+POST https://{{host}}/api/v1/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"binhnv","password":"123456"}
+###
+
+# Me
+GET https://{{host}}/api/v1/me HTTP/1.1
+{{token}}
+###
+
+# Read
+GET https://{{host}}/api/v1/home/sefl-tasks HTTP/1.1
+{{token}}
+###
+
+# Read
+GET https://{{host}}/api/v1/home/assigned-tasks HTTP/1.1
+{{token}}
+###
+
+# Read
+GET https://{{host}}/api/v1/home/assigning-tasks HTTP/1.1
+{{token}}
+###

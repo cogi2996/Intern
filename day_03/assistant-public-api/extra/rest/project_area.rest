@@ -1,0 +1,54 @@
+@port = 3001
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjQtMDEtMTRUMTc6NTY6MTQuNjYyNjgzKzA3OjAwIiwidXNlcl9pZCI6MX0.IKwvhV1mIv6SQGfP-8hxxgpvaMt0Om4dnK6tTUebqXs
+@projects = projects
+
+
+###########
+# AUTH #
+###########
+# Create
+POST http://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+POST http://{{host}}/api/v1/projects/8/areas HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"name":"Tháp 4"}
+
+############
+# USERS #
+############
+# UPDATE
+
+PUT http://{{host}}/api/v1/projects/8/areas/1 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"name":"Tháp 1 - Update"}
+###
+
+# Read
+GET http://{{host}}/api/v1/projects/8/areas/2 HTTP/1.1
+{{token}}
+###
+
+# Read
+GET http://{{host}}/api/v1/projects/8/areas HTTP/1.1
+{{token}}
+###
+
+# Delete
+DELETE http://{{host}}/api/v1/projects/8/areas/1 HTTP/1.1
+Content-Type: application/json
+{{token}}
+###

@@ -1,0 +1,85 @@
+@port = 3001
+# @host = localhost:{{port}}
+@host = coteccons.info
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjQtMDItMDRUMjI6MDg6MDMuNDIyNDMyNjM2KzA3OjAwIiwidXNlcl9pZCI6MX0.QWQkbDyWr12kWk_-7ihzvV15-0fsFDPjMxtysSa6LE4
+@timesheets = timesheets
+
+
+###########
+# AUTH #
+###########
+# Create
+POST https://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"binhnv","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+POST http://{{host}}/api/v1/timesheets HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"project_id":16,"date":"2023-02-05"}
+
+############
+############
+# UPDATE
+
+PUT http://{{host}}/api/v1/timesheets/1 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"date":"2023-01-02","cons_morning_person_planned":1,"cons_afternoon_person_planned":2,"cons_evening_person_planned":3,"cons_morning_person":4,"cons_afternoon_person":5,"cons_evening_person":6,"cons_overtime_hour":7,"cons_coefficient":8.5,"partner_morning_person_planned":9,"partner_afternoon_person_planned":10,"partner_evening_person_planned":11,"partner_morning_person":12,"partner_afternoon_person":13,"partner_evening_person":14,"partner_overtime_hour":15,"partner_coefficient":16.5}
+###
+
+# Read
+GET http://{{host}}/api/v1/timesheets/1 HTTP/1.1
+{{token}}
+###
+
+# Read
+GET http://{{host}}/api/v1/timesheets?project_id=13 HTTP/1.1
+{{token}}
+###
+
+################
+### COMMENTS ###
+################
+# Read list comment
+GET http://{{host}}/api/v1/timesheets/1/comments HTTP/1.1
+{{token}}
+###
+
+#################
+### EXECUTORS ###
+#################
+POST http://{{host}}/api/v1/timesheets/1/executors HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"executor_id":5,"morning_person_planned":17,"afternoon_person_planned":18,"evening_person_planned":19,"morning_person":20,"afternoon_person":21,"evening_person":22,"overtime_hour":23,"coefficient":24.5}
+###
+
+### Update ###
+PUT http://{{host}}/api/v1/timesheets/1/executors/1 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"executor_id":5,"morning_person_planned":117,"afternoon_person_planned":118,"evening_person_planned":119,"morning_person":120,"afternoon_person":121,"evening_person":122,"overtime_hour":123,"coefficient":124.5,"reason":"Lý do cập nhật"}
+###
+
+# Read list executor
+GET http://{{host}}/api/v1/timesheets/1/executors HTTP/1.1
+{{token}}
+###
+
+### Delete ###
+DELETE http://{{host}}/api/v1/timesheets/1/executors/2 HTTP/1.1
+Content-Type: application/json
+{{token}}
+###

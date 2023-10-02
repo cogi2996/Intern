@@ -1,0 +1,54 @@
+@port = 3001
+@host = localhost:{{port}}
+@token = Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjQtMDEtMTRUMDg6NDg6MjcuNTIwMzA3KzA3OjAwIiwidXNlcl9pZCI6MX0.svwYe583FcvUVKMZl9n4zqF7TkXixkC4U1N5sH8u4LQ
+@user = users
+
+
+###########
+# AUTH #
+###########
+# Create
+POST http://{{host}}/auth HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"username":"abc","password":"123456"}
+
+############
+# PROJECTS #
+############
+# CREATE
+
+POST http://{{host}}/api/v1/{{user}} HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"code":"NV002","name":"Nguyan Van 10","manager_id":8, "address":"123 Le Quang Dinh","phone":"1234568","email":"nguyanvanf@abc.com"}
+
+############
+# USERS #
+############
+# UPDATE
+
+PUT http://{{host}}/api/v1/{{user}}/6 HTTP/1.1
+Content-Type: application/json
+{{token}}
+
+{"code":"NV002","name":"Nguyan Van 101","manager_id":4,"phone":"1234567","email":"nguyanvanb@abc.com"}
+###
+
+# Read
+GET http://{{host}}/api/v1/{{user}}/6 HTTP/1.1
+{{token}}
+###
+
+# Read
+GET http://{{host}}/api/v1/{{user}} HTTP/1.1
+{{token}}
+###
+
+# Delete
+DELETE http://{{host}}/api/v1/{{user}}/3 HTTP/1.1
+Content-Type: application/json
+{{token}}
+###

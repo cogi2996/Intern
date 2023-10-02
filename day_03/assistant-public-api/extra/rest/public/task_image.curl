@@ -1,0 +1,4 @@
+curl -X POST http://localhost:3001/api/v1/tasks/8/images -H "Content-Type: multipart/form-data" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjMtMDYtMzBUMDU6Mjc6MDIuNzA2MzM3OTI3KzA3OjAwIiwidXNlcl9pZCI6Mn0.YiH9AYAeO6y_DwZUKMiaOXTBe4p42W_sIuF3Jl4XCOs" -F "image=@/Users/lap00004/Downloads/questions.jpeg"
+
+
+curl -X POST https://coteccons.info/api/v1/tasks/8/images -H "Content-Type: multipart/form-data" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhc3Npc3RhbnQtcHVibGljLWFwaSIsImV4cCI6IjIwMjMtMTItMzBUMTQ6NDU6MDAuOTg3NjkzKzA3OjAwIiwidXNlcl9pZCI6MX0.GsrXXlmAc1Op6Bku2iybg_stvD6bm2-xMsqop92U0j8" -F "image=@/Users/lap00004/Downloads/questions.jpeg" -F "uuid=49a46f42-7c09-4358-90a2-9ed8c80b7eb3" -F "create_at=2023-04-05T10:59:59"
